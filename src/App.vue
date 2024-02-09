@@ -9,7 +9,10 @@ import 'swiper/css/pagination';
 
 import 'swiper/css/navigation';
 
-import './style.css';
+
+
+import './style.css'
+
 // import required modules
 import { Pagination, FreeMode } from 'swiper/modules';
 
@@ -30,12 +33,13 @@ export default {
 <template>
   <div>
     <section class="section-one">
-      <p>Горд - где море встречается с историей!</p>
-      <nav>
+.
+      <div class="nav">
         <a>История</a>
-        <a>Новости</a>
+        <a>Достопремичательности</a>
         <a>Контакты</a>
-      </nav>
+      </div>
+      <p>Горд - где море встречается с историей!</p>
     </section>
     <section class="section-two">
       <div class="container">
@@ -60,12 +64,12 @@ export default {
       </div>
       <div class="conteiner-four">
         <div class="conrainer-five">
-          <img src="./components/icons/beach-one.png" alt="">
+          <img src="./components/icons/beach-one.png" alt="" class="BEACHES">
           <p>Калининград находиться на берегу балтийского моря. <br>
             Мягкие песчаные пляжи, бодрящая вода и свежий <br>
             морской бриз создают идеальные условия для отдыха и туризма</p>
         </div>
-        <img src="./components/icons/bigMap.svg" alt="">
+        <img src="./components/icons/bigMap.svg" alt="" class="bigmap">
       </div>
     </section>
     <section class="section-three">
@@ -110,14 +114,9 @@ export default {
     </section>
     <section class="section-five">
       <h1>Лента времени</h1>
-      <swiper  @slideChange="2" :slidesPerView="4" :spaceBetween="30" :centeredSlides="true" :loop="true" :pagination="{
+      <swiper  @slideChange="2" :slidesPerView="4" :spaceBetween="30" :centeredSlides="true"  :pagination="{
         clickable: true,
       }" :modules="modules" class="mySwiper">
-        <swiper-slide>
-          <div class="content">
-            <h3>1947</h3>
-          </div>
-        </swiper-slide>
         <swiper-slide>
           <div class="content">
             <h3>1255</h3>
@@ -136,6 +135,11 @@ export default {
         <swiper-slide>
           <div class="content">
             <h3>1946</h3>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="content">
+            <h3>1947</h3>
           </div>
         </swiper-slide>
         <swiper-slide>
@@ -215,6 +219,7 @@ p {
   font-size: 1rem;
 }
 
+
 .section-two,
 .section-three,
 .section-four,
@@ -224,13 +229,31 @@ p {
   margin-left: 19.375rem;
   margin-right: 19.375rem;
 }
-
+.nav{
+display: flex;
+margin: 40rem;
+color: white;
+margin: 3rem 40rem 0rem 45rem;
+width: 31.4375rem;
+/* верх:  */
+/* право:*/
+/* низ:   */
+/* лево: */
+}
 .section-one {
   background: url("./components/icons/mainPage.png");
   background-repeat: no-repeat;
   height: 100vh;
 }
-
+.section-one p{
+  font-family: "Fira Code";
+  color: white;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin: 38rem 30rem;
+  width: 60rem;
+  height: 3.25rem;
+}
 
 .section-two .container h2 {
   margin-left: 48rem;
@@ -343,6 +366,7 @@ p {
 }
 
 .section-four .contentiner{
+  margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -498,5 +522,122 @@ button {
   color: white;
   font-size: 1.375rem;
   cursor: pointer;
+}
+
+@media (max-width: 1366px){
+
+  h1,
+h2 {
+  font-size: 2rem;
+
+  font-weight: 300;
+}
+
+p {
+  font-family: "DM Sans", sans-serif;
+  font-size: .8rem;
+}
+
+
+.section-one{
+  height: 81vh;
+  background: url("./components/icons/mobile/Group 10 .png");
+  background-repeat: no-repeat;
+}
+
+.section-one p {
+    font-size: 2rem;
+    margin: 27rem 20rem;
+}
+
+.nav{
+  margin: 2rem 20rem 0rem 25rem;
+}
+
+.section-two .container h2{
+    margin-left: 31.9rem;
+}
+
+.section-two .container-two p{
+    margin-top: 3.3rem;
+}
+
+.section-two .museum {
+  width: 15rem;
+  margin-left: 24rem;
+  margin-top: 10rem;
+}
+
+.section-two .sobor {
+  width: 19rem;
+  margin-left: 35rem;
+  margin-top: 3.125rem;
+}
+
+.section-two .miniMap {
+  width: 50rem;
+}
+
+.section-two .conteiner-three p{
+    margin-left: 19rem;
+}
+
+.bigmap{
+  width: 33rem;
+}
+
+.BEACHES{
+  width: 15rem;
+}
+.section-two .conteiner-four .conrainer-five p{
+    width: 13rem;
+    margin-right: 5rem;
+}
+.section-two .conteiner-four .conrainer-five {
+    margin-top: 5rem;
+}
+
+.section-three .container{
+    gap: 4rem 0rem;
+}
+
+.section-four .contentiner{
+    gap: 5rem 0rem;
+}
+
+.section-two,
+.section-three,
+.section-four,
+.section-six,
+.section-five{
+  margin-top: 3.1rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+}
+
+.section-six
+{
+display: none;  
+}
+}
+
+@media (max-width: 375px){
+
+  .section-one{
+  height: 800vh;
+  background: url("./components/icons/mobile/mobminipages.png");
+  background-repeat: no-repeat;
+}
+
+
+
+  .section-two,
+.section-three,
+.section-four,
+.section-six,
+.section-five{
+display: none;
+}
+
 }
 </style>
