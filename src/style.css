@@ -1,0 +1,20 @@
+.swiper-pagination {
+    margin-top: 10px;
+    position:static;
+  }
+
+  .swiper-pagination-bullet{
+    background: #F9B538;
+  }
+
+  .swiper-pagination-bullet {
+    width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 15px));
+    height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 15px));
+  }
+
+  .swiper-pagination-bullet-active {
+    transition: 0.2s;
+    background: #FC8A4C;
+    width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 20px));
+    height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 20px));
+}
