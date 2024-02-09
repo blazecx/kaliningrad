@@ -18,6 +18,17 @@ import { Pagination, FreeMode } from 'swiper/modules';
 
 
 export default {
+  data() {
+    return {
+      hover: null,
+      contents: [
+        { id: 'img21', imageUrl: 'src/components/icons/kafsobor.png', title: 'Кафедральный собор в Калининграде - это одна из главных достопримечательностей города.Он был построен в XIII веке и является одним из старейших сооружений в Калининграде. Собор был построен в готическом стиле.' },
+        { id: 'img22', imageUrl: 'src/components/icons/vrangel.png', title: 'Крепость Врангеля - исторический комплекс в Калининграде, построенный в конце 19 века для защиты города и порта Кёнигсберг. Она была названа в честь генерала Петра Николаевича Врангеля. ' },
+        { id: 'img23', imageUrl: 'src/components/icons/fort5.png', title: 'Форт № 5, также известный как Форт Короля Фридриха-Вильгельма III, был построен в 1843 году в рамках укреплений города Кёнигсберг (современный Калининград). Он был назван в честь короля Пруссии Фридриха Вильгельма III, который правил с 1797 по 1840 год. Король Фридрих Вильгельм III был известен своей консервативной политикой и поддержкой традиционных ценностей. Он был активным сторонником реформ, которые должны были модернизировать прусскую армию и государственное управление. Он также известен своей поддержкой искусств и культуры, в частности, покровительством композитора Людвига ван Бетховена.' },
+        { id: 'img24', imageUrl: 'src/components/icons/vilage.png', title: 'Рыбацкая деревня в Калининграде - это исторический район города, который был основан рыбаками в средние века. Он расположен на берегу залива Калининградской бухты. ' }
+      ]
+    };
+  },
   components: {
     Swiper,
     SwiperSlide,
@@ -98,6 +109,23 @@ export default {
     <section class="section-four">
       <h1>Главные достопримечательности</h1>
       <div class="contentiner">
+    <div
+      v-for="(content, index) in contents"
+      :key="index"
+      class="content"
+      :id="content.id"
+      @mouseover="hover = index"
+      @mouseleave="hover = null"
+    >
+      <div class="content-image" :style="{ opacity: hover === index ? 0.5 : 1 }">
+        <img :src="content.imageUrl" alt="Card Image">
+      </div>
+      <div class="content-text" :style="{ opacity: hover === index ? 1 : 0 }">
+        <p>{{ content.title }}</p>
+      </div>
+    </div>
+  </div>
+      <!-- <div class="contentiner">
         <div class="content" id="img21">
           <h5>Кафедральный собор</h5>
         </div>
@@ -110,7 +138,7 @@ export default {
         <div class="content" id="img24">
           <h5>Рыбацкая деревня</h5>
         </div>
-      </div>
+      </div> -->
     </section>
     <section class="section-five">
       <h1>Лента времени</h1>
@@ -118,34 +146,34 @@ export default {
         clickable: true,
       }" :modules="modules" class="mySwiper">
         <swiper-slide>
-          <div class="content">
+          <!-- <div class="content">
             <h3>1255</h3>
-          </div>
+          </div> -->
+          <img src="./components/SwiperIMG/Group 19.png" alt="">
         </swiper-slide>
         <swiper-slide>
-          <div class="content">
+          <!-- <div class="content">
             <h3>1701</h3>
-          </div>
+          </div> -->
+          <img src="./components/SwiperIMG/Group 20.png" alt="">
         </swiper-slide>
         <swiper-slide>
-          <div class="content">
+          <!-- <div class="content">
             <h3>1945</h3>
-          </div>
+          </div> -->
+          <img src="./components/SwiperIMG/Group 21.png" alt="">
         </swiper-slide>
         <swiper-slide>
-          <div class="content">
+          <!-- <div class="content">
             <h3>1946</h3>
-          </div>
+          </div> -->
+          <img src="./components/SwiperIMG/Group 22.png" alt="">
         </swiper-slide>
         <swiper-slide>
-          <div class="content">
+          <!-- <div class="content">
             <h3>1947</h3>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="content">
-            <h3>1991</h3>
-          </div>
+          </div> -->
+          <img src="./components/SwiperIMG/Group 23.png" alt="">
         </swiper-slide>
       </swiper>
     </section>
@@ -363,6 +391,9 @@ width: 31.4375rem;
 .section-three .container {
   margin-top: 3.125rem;
   gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .section-four .contentiner{
@@ -373,38 +404,43 @@ width: 31.4375rem;
 }
 
 .section-four .contentiner .content{
-  display: flex;
-  justify-content: center;
-}
-
-h5{
-  margin-top: 1.875rem;
-  font-family: "Fira Code";
-  font-size: 1.125rem;
-  font-weight: bold;
-  color: white;
-}
-
-#img21, #img22, #img23, #img23, #img24{
+  position: relative;
   width: 19.375rem;
   height: 28.25rem;
+  overflow: hidden;
 }
 
-#img21{
-background: url(./components/icons/kafsobor.png);
+.content-image {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
 }
 
-#img22{
-  background: url(./components/icons/vrangel.png);
+.content-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-#img23{
-  background: url(./components/icons/fort5.png);
+.content-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s ease;
 }
 
-#img24{
-  background: url(./components/icons/vilage.png);
+.content-text h5 {
+  margin-top: 0; /* Убираем верхний отступ, чтобы текст был по центру */
 }
+
 
 /* swiper */
 .swiper {
@@ -623,16 +659,101 @@ display: none;
 
 @media (max-width: 375px){
 
-  .section-one{
-  height: 800vh;
-  background: url("./components/icons/mobile/mobminipages.png");
-  background-repeat: no-repeat;
+h1,
+h2 {
+  font-size: 1.2rem;
+
+  font-weight: 300;
+}
+
+p {
+  font-family: "DM Sans", sans-serif;
+  font-size: .65rem;
+}
+
+.section-one{
+height: 50vh;
+background: url("./components/icons/mobile/mobminipages.png");
+background-repeat: no-repeat;
+}
+.section-one p {
+  font-size: .65rem;
+  margin: 13rem 4rem;
+}
+
+.nav a{
+  font-size: 2rem;
+  margin: .5rem 2rem 0rem .3rem;
+}
+.section-two .container h2{
+  margin-left: 9rem;
+}
+.section-two .container-two p{
+  margin-top: 1.3rem;
+  margin-right: 14rem;
+}
+.section-two .sobor {
+  width: 7rem;
+  margin-left: 10rem;
+  margin-top: .125rem;
+}
+.section-two .museum {
+  width: 5rem;
+  margin-left: 8rem;
+  margin-top: 3rem;
+}
+.section-two .miniMap {
+  width: 22rem;
+  margin-top: 3rem;
+  margin-left: -5rem;
+}
+.section-two .conteiner-three p{
+  margin-left: -1.25rem;
+  margin-top: 3rem;
+}
+
+.bigmap{
+  width: 22rem;
+  margin-left: -26rem;
+  margin-top: -24rem;
+}
+
+.BEACHES{
+  width: 19rem;
+}
+.section-two .conteiner-four{
+  margin-top: 3.75rem;
+}
+.section-two .conteiner-four .conrainer-five p{
+  width: 19rem;
+  margin-right: 6rem;
+}
+.section-two .conteiner-four .conrainer-five {
+  margin-top: 17rem;
+}
+
+.section-three .container{
+  gap: 4rem 0rem;
+  width: 320px;
+  margin-left: -0.25rem;
+}
+
+.section-four .contentiner{
+  gap: 5rem 0rem;
+}
+
+.section-two,
+.section-three,
+.section-four,
+.section-six,
+.section-five{
+  margin-top: 3.1rem;
+  margin-left: 2rem;
+  margin-right: 7rem;
 }
 
 
 
-  .section-two,
-.section-three,
 .section-four,
 .section-six,
 .section-five{
@@ -640,4 +761,5 @@ display: none;
 }
 
 }
+
 </style>
