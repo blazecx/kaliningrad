@@ -93,10 +93,24 @@ export default {
     </section>
     <section class="section-four">
       <h1>Главные достопримечательности</h1>
+      <div class="contentiner">
+        <div class="content" id="img21">
+          <h5>Кафедральный собор</h5>
+        </div>
+        <div class="content" id="img22">
+          <h5>Крепость Врангеля</h5>
+        </div>
+        <div class="content" id="img23">
+          <h5>Форт №5</h5>
+        </div>
+        <div class="content" id="img24">
+          <h5>Рыбацкая деревня</h5>
+        </div>
+      </div>
     </section>
     <section class="section-five">
       <h1>Лента времени</h1>
-      <swiper @slideChange="2" :slidesPerView="4" :spaceBetween="30" :centeredSlides="true" :pagination="{
+      <swiper  @slideChange="2" :slidesPerView="4" :spaceBetween="30" :centeredSlides="true" :loop="true" :pagination="{
         clickable: true,
       }" :modules="modules" class="mySwiper">
         <swiper-slide>
@@ -191,14 +205,14 @@ export default {
 h1,
 h2 {
   font-family: "Fira Code";
-  font-size: 48px;
+  font-size: 3rem;
   color: #791100;
   font-weight: 500;
 }
 
 p {
   font-family: "DM Sans", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .section-two,
@@ -206,9 +220,9 @@ p {
 .section-four,
 .section-six,
 .section-five {
-  margin-top: 100px;
-  margin-left: 310px;
-  margin-right: 310px;
+  margin-top: 6.25rem;
+  margin-left: 19.375rem;
+  margin-right: 19.375rem;
 }
 
 .section-one {
@@ -219,49 +233,49 @@ p {
 
 
 .section-two .container h2 {
-  margin-left: 768px;
+  margin-left: 48rem;
 }
 
 .section-two .museum {
   position: relative;
-  margin-left: 560px;
-  margin-top: 190px;
+  margin-left: 35rem;
+  margin-top: 11.875rem;
 }
 
 .section-two .sobor {
   position: absolute;
-  margin-left: 850px;
-  margin-top: 50px;
+  margin-left: 53.125rem;
+  margin-top: 3.125rem;
 }
 
 .section-two .container-two p {
   position: absolute;
-  margin-top: 120px;
+  margin-top: 7.5rem;
 }
 
 .section-two .minimap {
-  margin-left: 50px;
+  margin-left: 3.125rem;
 }
 
 .section-two .conteiner-three {
-  margin-left: 60px;
+  margin-left: 3.75rem;
 }
 
 .section-two .conteiner-three p {
-  margin-left: 390px;
+  margin-left: 24.375rem;
 }
 
 .section-two .conteiner-four {
-  margin-top: 44px;
+  margin-top: 2.75rem;
   display: flex;
 }
 
 .section-two .conteiner-four .conrainer-five {
-  margin-top: 130px;
+  margin-top: 8.125rem;
 }
 
 .section-two .conteiner-four .conrainer-five p {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .section-three .container {
@@ -283,19 +297,19 @@ p {
 }
 
 .section-three .container .content:nth-child(4) {
-  padding-top: 8px;
+  padding-top: .5rem;
 }
 
 .section-three .container .content:nth-child(3) {
-  padding-top: 8px;
+  padding-top: .5rem;
 }
 
 #img1,
 #img2,
 #img3,
 #img4 {
-  width: 310px;
-  height: 235px;
+  width: 19.375rem;
+  height: 14.6875rem;
 
 }
 
@@ -319,25 +333,65 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 8px;
+  gap: .5rem;
 
 }
 
 .section-three .container {
-  margin-top: 50px;
+  margin-top: 3.125rem;
+  gap: 0.5rem;
+}
 
+.section-four .contentiner{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.section-four .contentiner .content{
+  display: flex;
+  justify-content: center;
+}
+
+h5{
+  margin-top: 1.875rem;
+  font-family: "Fira Code";
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: white;
+}
+
+#img21, #img22, #img23, #img23, #img24{
+  width: 19.375rem;
+  height: 28.25rem;
+}
+
+#img21{
+background: url(./components/icons/kafsobor.png);
+}
+
+#img22{
+  background: url(./components/icons/vrangel.png);
+}
+
+#img23{
+  background: url(./components/icons/fort5.png);
+}
+
+#img24{
+  background: url(./components/icons/vilage.png);
 }
 
 /* swiper */
 .swiper {
-  margin-top: 50px;
+  margin-top: 3.125rem;
   width: 100%;
   height: 100%;
 }
 
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
+  font-size: 1.125rem;
   background: #fff;
 
   /* Center slide text vertically */
@@ -357,84 +411,92 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 420px;
-  height: 190px;
+  width: 26.25rem;
+  height: 11.875rem;
   background: #FC8A4C;
   border-radius: 15px;
 }
 
 .section-six {
-  width: 1200px;
-  height: 478px;
-  border-radius: 35px;
+  width: 75rem;
+  height: 29.875rem;
+  border-radius: 2.1875rem;
   background: linear-gradient(to right, #FD6A21, #FB9E40);
-  padding-top: 40px;
-  padding-left: 110px;
+  padding-top: 2.5rem;
+  padding-left: 6.875rem;
   color: white;
 }
 
 .section-six h4 {
   font-family: "Fira Code";
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .section-six .con p:first-child {
-  margin-top: 18px;
+  margin-top: 1.125rem;
   font-family: "DM Sans", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .section-six .con p:last-child {
-  margin-top: 28px;
+  margin-top: 1.75rem;
   font-family: "DM Sans", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   color: black;
 }
 
 .section-six .labeltext {
-  margin-top: 18px;
-  width: 482px;
-  height: 44px;
+  margin-top: 1.125rem;
+  width: 30.125rem;
+  height: 2.75rem;
   border: none;
-  border-radius: 25px;
+  border-radius: 1.5625rem;
 }
 
 .section-six .contei {
-  margin-top: 26px;
-  margin-right: 630px;
-  padding-right: 150px;
+  margin-top: 1.625rem;
+  margin-right: 39.375rem;
+  padding-right: 9.375rem;
   display: flex;
   color: black;
 }
 
 .section-six .contei p {
-  margin-top: 2px;
+  margin-top: .125rem;
 }
 
 .section-six .contei .checkbox {
   cursor: pointer;
   border: 1px solid black;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   background: none;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
 
-.section-six .contei .checkbox:checked {}
+.section-six .contei .checkbox:checked::before {
+  content: '\2713'; /* Юникод символ галочки */
+  color: #791100; /* Цвет галочки */
+  font-size: 1.25rem; /* Размер шрифта */
+  position: relative; /* Позиционирование */
+  top: -0.375rem; /* Выравнивание по вертикали */
+  left: .125rem; /* Выравнивание по горизонтали */
+
+}
 
 
 button {
-  margin-top: 38px;
-  width: 244px;
-  height: 48px;
-  border-radius: 20px;
+  margin-top: 2.375rem;
+  width: 15.25rem;
+  height: 3rem;
+  border-radius: 1.25rem;
   border: none;
   background: black;
   color: white;
-  font-size: 22px;
+  font-size: 1.375rem;
   cursor: pointer;
 }
 </style>
