@@ -25,8 +25,17 @@ export default {
         { id: 'img21', imageUrl: 'src/components/icons/kafsobor.png', title: 'Кафедральный собор в Калининграде - это одна из главных достопримечательностей города.Он был построен в XIII веке и является одним из старейших сооружений в Калининграде. Собор был построен в готическом стиле.' },
         { id: 'img22', imageUrl: 'src/components/icons/vrangel.png', title: 'Крепость Врангеля - исторический комплекс в Калининграде, построенный в конце 19 века для защиты города и порта Кёнигсберг. Она была названа в честь генерала Петра Николаевича Врангеля. ' },
         { id: 'img23', imageUrl: 'src/components/icons/fort5.png', title: 'Форт № 5, также известный как Форт Короля Фридриха-Вильгельма III, был построен в 1843 году в рамках укреплений города Кёнигсберг (современный Калининград). Он был назван в честь короля Пруссии Фридриха Вильгельма III, который правил с 1797 по 1840 год. Король Фридрих Вильгельм III был известен своей консервативной политикой и поддержкой традиционных ценностей. Он был активным сторонником реформ, которые должны были модернизировать прусскую армию и государственное управление. Он также известен своей поддержкой искусств и культуры, в частности, покровительством композитора Людвига ван Бетховена.' },
-        { id: 'img24', imageUrl: 'src/components/icons/vilage.png', title: 'Рыбацкая деревня в Калининграде - это исторический район города, который был основан рыбаками в средние века. Он расположен на берегу залива Калининградской бухты. ' }
-      ]
+        { id: 'img24', imageUrl: 'src/components/icons/vilage.png', title: 'Рыбацкая деревня в Калининграде - это исторический район города, который был основан рыбаками в средние века. Он расположен на берегу залива Калининградской бухты. ' },
+      ],
+      modalVisible: false,
+      modalText: '',
+      slides: [
+        { text: 'src/components/SwiperIMG/Group 21.png', modalText: 'В 1255 году Калининград был известен как Кёнигсберг и был частью Тевтонского ордена. В это время город был небольшим поселением, но имел стратегическое значение из-за своего расположения на берегу Балтийского моря. В 1255 году был основан Кёнигсбергский замок, который стал центром власти Тевтонского ордена в регионе. В дальнейшем город стал важным торговым и культурным центром, а также столицей Восточной Пруссии.' },
+        { text: 'src/components/SwiperIMG/Group 22.png', modalText: 'В 1701 году Калининград был известен как Кёнигсберг и был столицей герцогства Пруссия. В это время город был важным торговым и культурным центром, а также имел стратегическое значение из-за своего расположения на берегу Балтийского моря. В 1701 году герцог Пруссии Фридрих I провозгласил себя королем Пруссии, и Кёнигсберг стал столицей новообразованного королевства. В дальнейшем город стал важным центром науки и образования, а также родиной многих известных ученых и философов, таких как Иммануил Кант.' },
+        { text: 'src/components/SwiperIMG/Group 23.png', modalText: 'В 1945 году Калининград был известен как Кёнигсберг и был частью нацистской Германии. В это время город был важным военно-морской базой и имел стратегическое значение для Германии. В 1945 году Кёнигсберг был захвачен советскими войсками в ходе Восточно-Прусской операции, и большая часть города была разрушена. ' },
+        { text: 'src/components/SwiperIMG/Group 20.png', modalText: 'В 1946 году Калининград был переименован из Кёнигсберга в честь советского лидера Михаила Калинина. Город был разрушен в ходе Второй мировой войны, и после ее окончания он был передан Советскому Союзу.' },
+        { text: 'src/components/SwiperIMG/Group 19.png', modalText: 'Калининград в 1991 году был частью Советского Союза. В этом году произошло несколько важных событий, включая распад Советского Союза и провозглашение независимости Российской Федерации. Калининград был одним из крупнейших портов в России и имел стратегическое значение для страны. В 1991 году Калининград также стал частью новообразованного Калининградского региона, который был отделен от остальной части России и окружен странами Балтии.' },
+    ],
     };
   },
   components: {
@@ -37,6 +46,20 @@ export default {
     return {
       modules: [Pagination],
     };
+  },
+  methods: {
+    openModal(index) {
+      this.modalVisible = true;
+      this.modalText = this.slides[index].modalText;
+    },
+    closeModal() {
+      this.modalVisible = false;
+    },
+  },
+  mounted() {
+    const swiper = new Swiper('.swiper-container', {
+      // ...
+    });
   },
 };
 </script>
@@ -141,44 +164,45 @@ export default {
       </div> -->
     </section>
     <section class="section-five">
-      <h1>Лента времени</h1>
-      <swiper  @slideChange="2" :slidesPerView="4" :spaceBetween="30" :centeredSlides="true"  :pagination="{
+       <h1>Лента времени</h1>
+    <!--  <swiper  @slideChange="2" :slidesPerView="4" :spaceBetween="30" :centeredSlides="true"  :pagination="{
         clickable: true,
       }" :modules="modules" class="mySwiper">
         <swiper-slide>
-          <!-- <div class="content">
-            <h3>1255</h3>
-          </div> -->
           <img src="./components/SwiperIMG/Group 19.png" alt="">
         </swiper-slide>
         <swiper-slide>
-          <!-- <div class="content">
-            <h3>1701</h3>
-          </div> -->
           <img src="./components/SwiperIMG/Group 20.png" alt="">
         </swiper-slide>
         <swiper-slide>
-          <!-- <div class="content">
-            <h3>1945</h3>
-          </div> -->
           <img src="./components/SwiperIMG/Group 21.png" alt="">
         </swiper-slide>
         <swiper-slide>
-          <!-- <div class="content">
-            <h3>1946</h3>
-          </div> -->
           <img src="./components/SwiperIMG/Group 22.png" alt="">
         </swiper-slide>
         <swiper-slide>
-          <!-- <div class="content">
-            <h3>1947</h3>
-          </div> -->
           <img src="./components/SwiperIMG/Group 23.png" alt="">
         </swiper-slide>
-      </swiper>
+      </swiper> -->
+      <swiper  @slideChange="2" :slidesPerView="4" :spaceBetween="30" :centeredSlides="true"  :pagination="{
+        clickable: true,
+      }" :modules="modules" class="mySwiper">
+  
+        <swiper-slide v-for="(slide, index) in slides" :key="index" @click="openModal(index)">
+          <img :src="slide.text" alt="">
+        </swiper-slide>
+
+    </swiper>
+    <div v-if="modalVisible" class="modal">
+      <div class="modal-content">
+        <p class="modal-text">{{ modalText }}</p>
+        <button @click="closeModal">Закрыть</button>
+      </div>
+    </div>
     </section>
   </div>
   <section class="section-six">
+    <div class="contetet">
     <h4>Будь в курсе</h4>
     <div class="con">
       <p>Подпишись на нашу рассылку о новых <br>
@@ -191,6 +215,8 @@ export default {
       <p>Соглашаюсь с Правилами рассылок</p>
     </div>
     <button>ПОДПИСАТЬСЯ</button>
+  </div>
+  <img src="./components/icons/pngwing 1.png" alt="" class="lasther">
   </section>
 </template>
 
@@ -467,17 +493,35 @@ width: 31.4375rem;
   object-fit: cover;
 }
 
-.swiper-slide .content {
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 26.25rem;
-  height: 11.875rem;
-  background: #FC8A4C;
-  border-radius: 15px;
+  z-index: 1000;
 }
 
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modal-text{
+width: 20rem;
+}
+
+
+
 .section-six {
+  display: flex;
   width: 75rem;
   height: 29.875rem;
   border-radius: 2.1875rem;
@@ -486,6 +530,11 @@ width: 31.4375rem;
   padding-left: 6.875rem;
   color: white;
 }
+
+.lasther{ 
+    position: absolute;
+    margin-left: 43rem;
+    margin-bottom: 10rem;}
 
 .section-six h4 {
   font-family: "Fira Code";
@@ -651,9 +700,27 @@ p {
   margin-right: 15rem;
 }
 
-.section-six
-{
-display: none;  
+
+.section-six{
+  width: 19rem;
+  padding-top: 0.5rem;
+  padding-left: 1.875rem;
+}
+  .section-six .labeltext{
+    width: 15rem;
+  }
+
+  .section-six .contei{
+    margin-right: -5.625rem;
+  }
+
+.lasther{ 
+display: none;
+}
+.section-six h4 {
+
+  font-size: 1.5rem;
+
 }
 }
 
@@ -741,6 +808,11 @@ background-repeat: no-repeat;
 .section-four .contentiner{
   gap: 5rem 0rem;
 }
+.section-four .contentiner .content{
+  position: relative;
+  width: 14.375rem;
+  height: 21.25rem;
+}
 
 .section-two,
 .section-three,
@@ -749,17 +821,21 @@ background-repeat: no-repeat;
 .section-five{
   margin-top: 3.1rem;
   margin-left: 2rem;
-  margin-right: 7rem;
+  margin-right: 3rem;
 }
 
-
-
-.section-four,
-.section-six,
-.section-five{
-display: none;
+.section-six{
+  width: 19rem;
+  padding-top: 0.5rem;
+  padding-left: 1.875rem;
 }
+  .section-six .labeltext{
+    width: 15rem;
+  }
+
+  .section-six .contei{
+    margin-right: -5.625rem;
+  }
 
 }
-
 </style>
